@@ -15,7 +15,7 @@ A secure, full-featured authentication system with:
 
 ### **Backend (Django REST Framework)**
 - JWT authentication (`access` + `refresh` tokens)
-- User registration, login, logout
+- User registration, login
 - MFA (two-factor) support using a temporary `mfa_token`
 - Password reset via email with `uidb64` + `token`
 
@@ -91,6 +91,7 @@ Backend runs at: **`http://localhost:8000`**
 1️⃣ **Navigate to frontend folder**
 ```bash
 cd frontend
+cd mfa-frontend
 ```
 
 2️⃣ **Install dependencies**
@@ -110,21 +111,22 @@ Frontend runs at: **`http://localhost:3000`**
 
 ---
 
-## 🔗 API Endpoints
+## API Endpoints
 
 | Method | Endpoint                          | Description |
 |--------|-----------------------------------|-------------|
 | POST   | `/api/register/`                  | Register new user |
 | POST   | `/api/login/`                     | Login (MFA optional) |
 | POST   | `/api/mfa/login/verify/`          | Verify MFA code |
-| POST   | `/api/token/refresh/`             | Refresh JWT token |
+| GET    | `/api/mfa/setup/`                 | Sets Up for MFA Code |
+| POST   | `/api/mfa/setup/verify`           | Verifies set Up for MFA Code |
+| GET    | `/api/mfa/status`                 | Checks status of MFA of certain user |
 | POST   | `/api/password-reset/request/`    | Request password reset |
 | POST   | `/api/password-reset/confirm/`    | Confirm password reset |
-| POST   | `/api/logout/`                    | Logout & blacklist token |
 
 ---
 
-## 🔐 MFA Workflow
+## MFA Workflow
 
 1. User logs in with username & password.
 2. Backend responds:
