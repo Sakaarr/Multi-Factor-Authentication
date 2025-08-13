@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000/api",
+  // baseURL: "http://localhost:8000/api"  ??Uncomment this line for local development,   
+  baseURL:  "https://sakar1234.pythonanywhere.com/api/",
   timeout: 10000,
 });
 

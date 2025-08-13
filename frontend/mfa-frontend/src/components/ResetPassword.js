@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import API from "../api";
 
 export default function ResetPassword() {
-  const { uidb64, token } = useParams();
+  const { uid, token } = useParams();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,7 +28,7 @@ export default function ResetPassword() {
     setLoading(true);
     try {
       await API.post("/password-reset/confirm/", {
-        uidb64,
+        uidb64 : uid,
         token,
         new_password: password,
       });
