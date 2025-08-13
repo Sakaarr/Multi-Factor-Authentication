@@ -1,4 +1,4 @@
-# 🔐 Fullstack Authentication System (Django + React)
+#  Fullstack Authentication System (Django + React)
 
 A secure, full-featured authentication system with:
 
@@ -30,7 +30,7 @@ A secure, full-featured authentication system with:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 **Backend:**
 - Python 3.x
@@ -47,15 +47,15 @@ A secure, full-featured authentication system with:
 
 ---
 
-## ⚙️ Backend Setup
+##  Backend Setup
 
-1️⃣ **Clone the repo & navigate to backend folder**
+1️ **Clone the repo & navigate to backend folder**
 ```bash
 git clone {repo_url}
 cd backend
 ```
 
-2️⃣ **Create virtual environment & install dependencies**
+2️ **Create virtual environment & install dependencies**
 ```bash
 python -m venv venv
 source venv/bin/activate  # (Linux/Mac)
@@ -64,20 +64,20 @@ venv\Scripts\activate     # (Windows)
 pip install -r requirements.txt
 ```
 
-3️⃣ **Create `.env` file**
+3️ **Create `.env` file**
 ```env
 SECRET_KEY=your_secret_key
 EMAIL_HOST_USER=your_email@example.com
 EMAIL_HOST_PASSWORD=your_email_password (App Password)
 ```
 
-4️⃣ **Apply migrations & create superuser**
+4️ **Apply migrations & create superuser**
 ```bash
 python manage.py migrate
 python manage.py createsuperuser
 ```
 
-5️⃣ **Run backend**
+5️ **Run backend**
 ```bash
 python manage.py runserver
 ```
@@ -86,15 +86,15 @@ Backend runs at: **`http://localhost:8000`**
 
 ---
 
-## 💻 Frontend Setup
+##  Frontend Setup
 
-1️⃣ **Navigate to frontend folder**
+1️ **Navigate to frontend folder**
 ```bash
 cd frontend
 cd mfa-frontend
 ```
 
-2️⃣ **Install dependencies**
+2️ **Install dependencies**
 ```bash
 npm install
 ```
@@ -102,7 +102,7 @@ npm install
 
 
 
-3️⃣ **Run frontend**
+3️ **Run frontend**
 ```bash
 npm start
 ```
@@ -137,7 +137,7 @@ Frontend runs at: **`http://localhost:3000`**
 
 ---
 
-## 🔄 Password Reset Workflow
+##  Password Reset Workflow
 
 1. User clicks **"Forgot Password"**.
 2. Enters email → backend sends reset link:  
