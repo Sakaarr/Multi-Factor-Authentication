@@ -22,7 +22,6 @@ export default function Dashboard() {
             const mfaResponse = await API.get("/mfa/status/");
             setHasMFA(mfaResponse.data.mfa_enabled);
           } catch (error) {
-            // If endpoint doesn't exist, assume no MFA status check
             console.log("MFA status check not available");
           }
         }
@@ -160,45 +159,6 @@ export default function Dashboard() {
                   </div>
                 </div>
               )}
-
-              <div className="dashboard-stats">
-                <div className="stat-card">
-                  <div className="stat-icon stat-icon-primary">
-                    <svg viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="stat-content">
-                    <h4>Profile</h4>
-                    <p>Manage your account</p>
-                  </div>
-                </div>
-
-                <div className="stat-card">
-                  <div className="stat-icon stat-icon-success">
-                    <svg viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M18 8A6 6 0 006.025.25 6.002 6.002 0 002.25 6v7.25A2.75 2.75 0 005 16.25h1.25V12a.75.75 0 01.75-.75h4a.75.75 0 01.75.75v4.25H13a2.75 2.75 0 002.75-2.75V8zM8.5 12.5v3h3v-3h-3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="stat-content">
-                    <h4>Security</h4>
-                    <p>Account protection</p>
-                  </div>
-                </div>
-
-                <div className="stat-card">
-                  <div className="stat-icon stat-icon-info">
-                    <svg viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="stat-content">
-                    <h4>Activity</h4>
-                    <p>View recent actions</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </main>
@@ -283,16 +243,13 @@ export default function Dashboard() {
           padding: 2rem 1rem;
         }
 
-        .content-wrapper {
-          padding: 0;
-        }
-
         .welcome-card {
           background: white;
           border-radius: 16px;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
           padding: 2rem;
           border: 1px solid rgba(255, 255, 255, 0.2);
+          animation: fadeIn 0.6s ease-out;
         }
 
         .welcome-header {
@@ -390,72 +347,6 @@ export default function Dashboard() {
           text-decoration: underline;
         }
 
-        .dashboard-stats {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1.5rem;
-          margin-top: 1rem;
-        }
-
-        .stat-card {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 1.5rem;
-          background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-          border-radius: 12px;
-          border: 1px solid #e2e8f0;
-          transition: all 0.2s ease;
-          cursor: pointer;
-        }
-
-        .stat-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-icon {
-          width: 3rem;
-          height: 3rem;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .stat-icon svg {
-          width: 1.5rem;
-          height: 1.5rem;
-          color: white;
-        }
-
-        .stat-icon-primary {
-          background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        }
-
-        .stat-icon-success {
-          background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .stat-icon-info {
-          background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        }
-
-        .stat-content h4 {
-          font-size: 1.1rem;
-          font-weight: 700;
-          color: #1f2937;
-          margin: 0 0 0.25rem 0;
-        }
-
-        .stat-content p {
-          font-size: 0.875rem;
-          color: #6b7280;
-          margin: 0;
-        }
-
-        /* Responsive design */
         @media (max-width: 768px) {
           .nav-content {
             padding: 0 1rem;
@@ -488,10 +379,6 @@ export default function Dashboard() {
             font-size: 1.5rem;
           }
           
-          .dashboard-stats {
-            grid-template-columns: 1fr;
-          }
-          
           .alert {
             flex-direction: column;
             gap: 0.75rem;
@@ -517,7 +404,6 @@ export default function Dashboard() {
           }
         }
 
-        /* Animations */
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -527,22 +413,6 @@ export default function Dashboard() {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-
-        .welcome-card {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        .stat-card {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        .stat-card:nth-child(2) {
-          animation-delay: 0.1s;
-        }
-
-        .stat-card:nth-child(3) {
-          animation-delay: 0.2s;
         }
       `}</style>
     </>
